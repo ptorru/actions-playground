@@ -1,0 +1,11 @@
+name: Build Actions Playground
+on: [push]
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: ./build.sh
+        shell: bash
+      - name: List Binary
+        run: ls -la target/release/actions-playground
