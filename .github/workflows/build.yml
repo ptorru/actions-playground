@@ -17,3 +17,8 @@ jobs:
         run: bash build.sh
       - name: List Binary
         run: ls -la target/release/actions-playground
+      - name: Archive binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: linux-binary
+          path: target/release/actions-playground
