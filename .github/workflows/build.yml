@@ -4,6 +4,8 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
+      - name: Check location
+        run: pwd; ls -la
       - name: Run build script
         run: bash build.sh
       - name: List Binary
