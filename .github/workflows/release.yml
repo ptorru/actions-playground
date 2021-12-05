@@ -1,0 +1,26 @@
+on:
+  release:
+    types: [created]
+name: Handle Release
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Run build script
+        run: bash build.sh
+
+      - name: Archive binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: linux-binary
+          path: target/release/actions-playground
+
+      - name: Upload the artifacts
+        uses: skx/github-action-publish-binaries@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: 'target/release/actions-playground'
