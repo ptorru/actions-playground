@@ -12,8 +12,8 @@ jobs:
             artifact_name: actions-playground
             asset_name: actions-playground-macos-amd64
           - os: windows-latest
-            artifact_name: mything.exe
-            asset_name: mything-windows-amd64
+            artifact_name: actions-playground.exe
+            asset_name: actions-playground-amd64
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
