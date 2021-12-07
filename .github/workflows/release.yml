@@ -3,8 +3,11 @@ on:
     types: [created]
 name: Handle Release
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+    matrix:
+      os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -15,7 +18,7 @@ jobs:
       - name: Archive binary
         uses: actions/upload-artifact@v2
         with:
-          name: linux-binary
+          name: ${{ matrix.os }}-binary
           path: target/release/actions-playground
 
       - name: Upload the artifacts

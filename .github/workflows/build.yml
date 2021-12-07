@@ -1,7 +1,7 @@
 name: Build Actions Playground
 on: [push]
 jobs:
-  build-linux:
+  build:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
