@@ -1,24 +1,9 @@
 name: Build Actions Playground
 on: [push]
 jobs:
-  setup-build-matrix:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build matrix
-        id: build-matrix
-        uses: jgiannuzzi/setup-build-matrix@v1
-        with:
-          config: |
-            matrix:
-              # Base matrix
-              os: [ubuntu-latest, windows-latest]
-    outputs:
-      matrix: ${{ steps.build-matrix.outputs.matrix }}
-
   build-linux:
-    needs: setup-build-matrix
     strategy:
-      matrix: ${{ fromJson(needs.setup-build-matrix.outputs.matrix) }}
+      matrix: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
