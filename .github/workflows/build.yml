@@ -19,5 +19,5 @@ jobs:
       - name: Archive binary
         uses: actions/upload-artifact@v2
         with:
-          name: linux-binary
+          name: ${{ matrix.os }}-binary
           path: target/release/actions-playground
