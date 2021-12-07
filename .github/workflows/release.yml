@@ -18,6 +18,9 @@ jobs:
           - os: macos-latest
             artifact_name: actions-playground
             asset_name: actions-playground-macos-amd64
+          - os: windows-latest
+            artifact_name: mything.exe
+            asset_name: mything-windows-amd64
 
     steps:
     - uses: actions/checkout@v2
