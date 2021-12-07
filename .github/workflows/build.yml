@@ -12,6 +12,8 @@ jobs:
             matrix:
               # Base matrix
               os: [ubuntu-latest, windows-latest]
+    outputs:
+      matrix: ${{ steps.build-matrix.outputs.matrix }}
 
   build-linux:
     needs: setup-build-matrix
